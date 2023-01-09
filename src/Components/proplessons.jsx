@@ -46,7 +46,9 @@ export const Getstarted = (props) => {
 export const Car = (props) => {
   // changeColor = () => {
   //   props.setState({color: "blue"});
-  // }
+// }
+
+
 
 
   return(
@@ -65,6 +67,48 @@ export const Car = (props) => {
   )
 }
 
+// Destructuring props outside a parenthesis
+export const Getinfo = (props) => {
+
+const {welcome, title, prerequisite,address:{city, village:{area}},Email} = props.data
+
+return(
+  <>
+  <h1>{welcome}</h1>
+  <h2>{title}</h2>
+  <h1>{prerequisite}</h1>
+  <h2>{city}</h2>
+  <h1>{area}</h1>
+  <h1>{Email()}</h1>
+  </>
+
+)
+}
+
+// Destructuring props inside a parenthesis
+export const Getdetails = ({data:{welcome, title, prerequisite,address:{city, village:{area}},Email}}) => {
+
+  return (
+    <>
+    <h1>Hello you are {welcome}</h1>
+  <h2>I am a {title}</h2>
+  <h1>I am sound in {prerequisite}</h1>
+  <h2>I live in {city}</h2>
+  <h1>Specifically {area}</h1>
+  <h1>Contact me at {Email()}</h1>
+    </>
+  )
+}
+// passing props as a function
+export const Button = ({text, onclick, style}) => <button onClick={onclick} style={style}> {text}</button>
+
+// export const Showtime = ({date, month, year}) => {
+//   return(
+//     <>
+//     <h1>{month} {pdate}, {year}</h1>
+//     </>
+//   )
+// }
 
 
 export default User;

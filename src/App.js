@@ -3,10 +3,15 @@ import './App.css';
 import myImage from  './asset/image/pic-1.jpg'
 import myAudio from './asset/audios/ayo.mp3'
 import Components,{UserCard} from './Components/Component'
-import User, {Status, Skills, Getstarted, Car} from './Components/proplessons'
+import User, {Status, Skills, Getstarted, Car, Getinfo, Getdetails, Button, Showtime} from './Components/proplessons'
 import doSomeMath from './Components/Math'
 import { addTwo, multiply, subtract } from './Components/Math';
 import * as everthing from './Components/Math'
+import Numbers, { Name, Skils } from './Components/Map_list_keys'
+import { Container } from './Components/styles/Container.styled';
+import Header from './Components/styles/Header'
+import { ThemeProvider } from 'styled-components';
+
 
 
 
@@ -102,9 +107,9 @@ village:{
   area:'lugbe'
 }
 },
-Email:()=>{
+Email:() => {
   return 'olab@gmail.com'
-}
+ }
 }
 
 let car = {
@@ -114,9 +119,73 @@ let car = {
   year: 1964
 }
 
-  return (
+// passing props as a function
+const date = new Date()
+const handleTime= () =>{
+  alert(date.getFullYear())
+}
+const greetPeople = () => {
+  alert('welcome princess')
+}
 
+
+// const showdate = (time) => {
+//   const months = [
+//     'January',
+//     'February',
+//     'March',
+//     'April',
+//     'May',
+//     'June',
+//     'July',
+//     'August',
+//     'September',
+//     'October',
+//     'November',
+//     'December'
+//   ]
+// }
+//   const month = months[time.getMonth()].slice(0,3)
+//   const year = time.getFullYear()
+//   const pdate = time.getDate()
+  // return `${month} ${date}, ${year}`
+  // return (
+  //   <>
+  //   <h1>{month} {date}, {year}</h1>
+  //   </>
+  // )
+  
+  // destructuring an array
+   let things = ['table', 'chairs', 'fan', 'rug' ]
+   let [a, b, c, d] = things;
+   console.log(c)
+
+   //mapping FROM ARRAY OF ARRAY
+const Skill = [
+  ['HTML', 7],
+  ['CSS', 7],
+  ['JAVASCRIPT', 6],
+  ['REACT', 6]
+]
+  const names = [['Mr Victor'], ['Soft'], ['Phoenix'], ['Emmy']]
+
+  const theme = {
+    colors:{
+      header:'lightblue',
+      body: '#fff',
+      footer: '#003333',
+      prime: '#fff'
+    }
+  }
+  
+  return (
+    <ThemeProvider theme ={theme}>
     <div className="App" style={styles}>
+     <Container>
+      <h2>Hello World</h2>
+     </Container>
+     <Header/>
+     
      <p > {jsxElement}</p>
       {welcome}
       {startDate}
@@ -161,9 +230,15 @@ let car = {
          <Car car ={car}/>
          <h1>{doSomeMath.addTwo(5,7)}</h1>
          <h1>{addTwo(10,9)}</h1>
-
-         
+           <Getinfo data={data}/>
+           <Getdetails data= {data}/>
+         <Button text='Greet People' onclick={greetPeople} style={buttonStyles}/>
+         <Button text='Greet people' onclick={handleTime} style={buttonStyles}/>
+         <Name names={names}/>
+         <Skils skills ={Skill}/>
+         <Numbers/>
     </div>
+    </ThemeProvider>
        );
   // return React.createElement (
   //   "div", null,
@@ -191,6 +266,10 @@ const styles ={
 //   }
 // }
 
-
+const buttonStyles ={
+  background:'sandyBrown',
+  color:'black',
+  borderRadius:'20px'
+}
 
 export default App;
